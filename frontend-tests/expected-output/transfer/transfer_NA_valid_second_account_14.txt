@@ -1,0 +1,3 @@
+Login successful
+ERROR: Invalid destination account
+Logout successful

@@ -1,0 +1,4 @@
+Login standard
+Deposit 11111 100.00
+Withdrawal 11111 50.00
+Logout

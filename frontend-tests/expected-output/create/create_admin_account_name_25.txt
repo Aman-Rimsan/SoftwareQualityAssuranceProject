@@ -1,0 +1,3 @@
+Login successful
+ERROR: account name too long 
+Logout successful

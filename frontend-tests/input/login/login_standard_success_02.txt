@@ -1,0 +1,2 @@
+Login standard
+Logout

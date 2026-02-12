@@ -1,0 +1,3 @@
+Login successful
+ERROR: Transfer limit exceeded
+Logout successful

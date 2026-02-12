@@ -1,0 +1,3 @@
+Login successful
+ERROR: account number not found
+Logout successful

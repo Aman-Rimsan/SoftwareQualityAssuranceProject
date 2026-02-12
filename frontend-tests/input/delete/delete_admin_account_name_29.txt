@@ -1,0 +1,3 @@
+Login admin 
+Delete fakeAcc 12345
+Logout

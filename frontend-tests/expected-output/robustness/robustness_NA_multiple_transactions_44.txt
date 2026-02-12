@@ -1,0 +1,10 @@
+Login successful
+Transaction accepted
+Transaction accepted
+Transaction accepted
+Logout successful
+Transaction file made: 
+01 test_name___________ 11111 00020.00 MM 
+04 test_name___________ 11111 00030.00 MM 
+03 test_name___________ 11111 00025.00 EC 
+00 ____________________ 00000 00000.00 MM

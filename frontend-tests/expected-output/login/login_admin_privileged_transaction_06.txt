@@ -1,0 +1,6 @@
+Login successful
+Transaction confirmed
+Logout successful
+Transaction file made: 
+05 test_name___________ 12345 00010.00 MM 
+00 ____________________ 00000 00000.00 MM

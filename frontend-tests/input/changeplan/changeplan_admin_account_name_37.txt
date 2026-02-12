@@ -1,0 +1,3 @@
+Login admin
+Changeplan test_naae 11111 NP
+Logout

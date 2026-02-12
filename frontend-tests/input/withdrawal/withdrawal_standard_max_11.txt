@@ -1,0 +1,3 @@
+Login standard
+Withdrawal 11111 600.00
+Logout

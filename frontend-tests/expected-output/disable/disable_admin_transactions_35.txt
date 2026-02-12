@@ -1,0 +1,7 @@
+Login successful
+Transaction accepted
+ERROR: account disabled
+Logout successful
+Transaction file made: 
+07 test_name___________ 11111 00000.00 MM 
+00 ____________________ 00000 00000.00 MM

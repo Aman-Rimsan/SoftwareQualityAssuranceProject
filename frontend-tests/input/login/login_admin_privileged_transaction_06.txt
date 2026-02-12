@@ -1,0 +1,3 @@
+Login admin
+Create test_name 12345 10.00
+Logout

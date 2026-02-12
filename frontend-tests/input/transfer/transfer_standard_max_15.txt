@@ -1,0 +1,3 @@
+Login standard
+Transfer 11111 22222 2000.00
+Logout

@@ -1,0 +1,3 @@
+Login admin
+Disable fakeAcc 11111
+Logout

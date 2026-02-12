@@ -1,0 +1,4 @@
+Login admin
+Delete test_name 11111
+Withdrawal test_name 11111 20.00
+Logout

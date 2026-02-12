@@ -1,0 +1,3 @@
+Login admin 
+Create nameTooLong1234567890 11112 100.00
+Logout

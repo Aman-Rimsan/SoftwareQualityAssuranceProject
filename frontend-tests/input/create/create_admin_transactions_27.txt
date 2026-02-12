@@ -1,0 +1,4 @@
+Login admin
+Create newAcc 12345 500.00
+Withdrawal newAcc 12345 20.00
+Logout

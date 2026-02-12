@@ -1,0 +1,3 @@
+Login successful
+ERROR: invalid account
+Logout successful

@@ -1,0 +1,3 @@
+Login successful
+ERROR: insufficient funds
+Logout successful

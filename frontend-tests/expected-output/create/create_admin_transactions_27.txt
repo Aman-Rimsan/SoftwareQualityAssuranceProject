@@ -1,0 +1,7 @@
+Login successful
+Transaction accepted 
+ERROR: account does not exist
+Logout successful
+Transaction file made: 
+05 newAcc___________ 12345 00500.00 MM  
+00 ____________________ 00000 00000.00 MM

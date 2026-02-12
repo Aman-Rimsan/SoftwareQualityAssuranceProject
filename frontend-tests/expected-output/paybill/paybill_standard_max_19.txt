@@ -1,0 +1,3 @@
+Login successful 
+ERROR: payment limit exceeded
+Logout successful

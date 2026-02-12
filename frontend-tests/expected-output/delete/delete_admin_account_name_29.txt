@@ -1,0 +1,6 @@
+Login successful
+Transaction accepted
+Logout successful
+Transaction file made:
+06 fakeAcc___________ 12345 00000.00 MM  
+00 ____________________ 00000 00000.00 MM

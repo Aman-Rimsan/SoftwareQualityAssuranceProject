@@ -1,0 +1,5 @@
+Login standard
+Withdrawal 11111 20.00
+Deposit 11111 30.00
+Paybill 11111 EC 25.00
+Logout

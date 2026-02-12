@@ -1,0 +1,3 @@
+Login standard
+Paybill 11111 EC 2000.00
+Logout

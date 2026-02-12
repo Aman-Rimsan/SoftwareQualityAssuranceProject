@@ -1,0 +1,4 @@
+Login with randomly placed capital and lowercase letters
+Withdraw money without decimal specified (20)
+Withdraw money over limit or account balance
+Logout

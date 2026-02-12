@@ -1,0 +1,7 @@
+Login successful
+Transaction accepted
+ERROR: Account number does not exist under test_name
+Logout successful
+Transaction file made: 
+08 test_name___________ 11111 00000.00 MM 
+00 ____________________ 00000 00000.00 MM

@@ -1,0 +1,3 @@
+Login successful
+ERROR: invalid starting amount 
+Logout successful
