@@ -1,15 +1,32 @@
+"""
+The BankOperations class contains the core logic for all banking transactions.
+It interacts with the account list to modify balances and uses the 
+TransactionRecorder to log every successful action.
+"""
 class BankOperations:
     def __init__(self, accounts, recorder):
+        """
+        Initialization method that links the operations to the current accounts list
+        and the session's transaction recorder.
+        """
         self.accounts = accounts
         self.recorder = recorder
 
     def find_account(self, name, number):
+        """
+        Helper method to locate an account dictionary within the accounts list
+        based on a matching name and account number. Returns None if not found.
+        """
         for acc in self.accounts:
             if acc["name"] == name and acc["number"] == number:
                 return acc
         return None
     
     def withdraw(self, name):
+        """
+        Deducts a specified amount from an active account.
+        Logs the transaction with code '01'.
+        """
         if name == None:
             name = input("Account holder name: ")
         number = input("Account number: ")
@@ -21,6 +38,10 @@ class BankOperations:
             self.recorder.record("01", name, number, amount)
 
     def deposit(self, name):
+        """
+        Adds a specified amount to an active account balance.
+        Logs the transaction with code '04'.
+        """
         if name == None:
             name = input("Account holder name: ")
         number = input("Account number: ")
@@ -32,6 +53,10 @@ class BankOperations:
             self.recorder.record("04", name, number, amount)
 
     def transfer(self, name):
+        """
+        Moves funds between two accounts belonging to the same user.
+        Logs the transaction with code '02' and includes the target account.
+        """
         if name == None:
             name = input("Account holder name: ")
         from_number = input("Account number to get transfer money: ")
@@ -47,6 +72,10 @@ class BankOperations:
             self.recorder.record("02", name, name, from_number, amount, to_number)
 
     def paybill(self, name):
+        """
+        Deducts funds to pay a bill to a specific company (EC, CQ, or FI).
+        Logs the transaction with code '03'.
+        """
         if name == None:
             name = input("Account holder name: ")
         number = input("Account number: ")
@@ -59,6 +88,10 @@ class BankOperations:
             self.recorder.record("03", name, number, amount, payee)
 
     def create(self):
+        """
+        Admin-only: Adds a new account to the system with an initial balance.
+        Logs the creation with code '05'.
+        """
         name = input("Account holder name: ")
         number = input("Account number: ")
         amount = float(input("Initial balance: "))
@@ -68,6 +101,10 @@ class BankOperations:
         self.recorder.record("05", name, number, amount)
 
     def delete(self):
+        """
+        Admin-only: Removes an existing account from the system list.
+        Logs the deletion with code '06'.
+        """
         name = input("Account holder name: ")
         number = input("Account number: ")
         acc = self.find_account(name, number)
@@ -77,6 +114,10 @@ class BankOperations:
             self.recorder.record("06", name, number)
 
     def disable(self):
+        """
+        Admin-only: Changes an account status to 'Disabled', preventing further transactions.
+        Logs the status change with code '07'.
+        """
         name = input("Account holder name: ")
         number = input("Account number: ")
         acc = self.find_account(name, number)
@@ -86,6 +127,10 @@ class BankOperations:
             self.recorder.record("07", name, number)
 
     def changeplan(self):
+        """
+        Admin-only: Updates the account's payment plan type from SP (student plan) to NP (non-student plan).
+        Logs the change with code '08'.
+        """
         name = input("Account holder name: ")
         number = input("Account number: ")
 
