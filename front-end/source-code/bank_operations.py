@@ -69,7 +69,7 @@ class BankOperations:
         if from_acc and from_acc["status"] == "A" and to_acc and to_acc["status"] == "A":
             to_acc["balance"] += amount
             from_acc["balance"] -= amount
-            self.recorder.record("02", name, name, from_number, amount, to_number)
+            self.recorder.record("02", name, from_number, amount, to_number)
 
     def paybill(self, name):
         """

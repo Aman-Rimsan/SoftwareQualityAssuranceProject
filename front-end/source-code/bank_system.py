@@ -21,7 +21,7 @@ The file ends with a 00 code to indicate there are no more transactions recorded
 How to run the program:
 -------------------
 To run the program, you'll have to paste this in the terminal:
-python bank_system.py accounts.txt
+python bank_system.py accounts.txt transaction_output.txt
 """
 import sys
 
@@ -59,9 +59,8 @@ class BankSystem:
                 balance = float(line[29:37])
 
                 self.accounts.append({"number": number, "name": name, "status": status, "balance": balance})
-        print(self.accounts)
 
-    def start_system(self):
+    def start_system(self, transaction_output_file):
         """
         The main entry point for the session. Initializes the recorder and operations,
         then enters a loop to handle user login or program termination.
@@ -72,7 +71,10 @@ class BankSystem:
         while True:
             print("\n1. Login")
             print("2. Exit")
-            option = input("Option number: ")
+            try:
+                option = input("Option number: ")
+            except EOFError:
+                break
 
             if option == "2":
                 break
@@ -85,9 +87,9 @@ class BankSystem:
                 else:
                     account_name = None
 
-                self.operations_menu(mode, account_name, operations, recorder)
+                self.operations_menu(mode, account_name, operations, recorder, transaction_output_file)
 
-    def operations_menu(self, mode, account_name, operations, recorder):
+    def operations_menu(self, mode, account_name, operations, recorder, transaction_output_file):
         """
         Displays the banking menu based on the user's login mode.
         Routes user input to the specific BankOperations methods and handles session logout.
@@ -105,10 +107,13 @@ class BankSystem:
                 print("8. Changeplan")
             print("9. Logout")
 
-            option = input("Enter option number: ")
+            try:
+                option = input("Enter option number: ")
+            except EOFError:
+                return
             
             if option == "9":
-                recorder.write_transaction_file()
+                recorder.write_transaction_file(transaction_output_file)
                 print("Logged out.\n")
                 return
             
@@ -138,9 +143,12 @@ class BankSystem:
                     operations.changeplan()
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python bank_system.py accounts.txt")
+    if len(sys.argv) < 3:
+        print("Usage: python bank_system.py accounts.txt transaction_output.txt")
         sys.exit()
 
-    system = BankSystem(sys.argv[1])
-    system.start_system()
+    accounts_file = sys.argv[1]
+    transaction_output_file = sys.argv[2]
+
+    system = BankSystem(accounts_file)
+    system.start_system(transaction_output_file)
