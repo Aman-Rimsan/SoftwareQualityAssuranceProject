@@ -1,4 +1,10 @@
-Login admin
-Changeplan test_name 11111 NP
-Changeplan test_name 12111 NP
-Logout
+1
+admin
+8
+amanulla rimsan
+11111
+8
+john smith
+22222
+9
+2

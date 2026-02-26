@@ -1,4 +1,8 @@
-Login standard
-Deposit 11111 100.00
-Withdrawal 11111 50.00
-Logout
+1
+standard
+amanulla rimsan
+4
+11111
+400
+9
+2
