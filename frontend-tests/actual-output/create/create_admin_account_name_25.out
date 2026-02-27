@@ -12,7 +12,8 @@ Option number: Login type (Standard/Admin):
 7. Disable
 8. Changeplan
 9. Logout
-Enter option number: Account holder name: Account number: Initial balance: 
+Enter option number: Account holder name: Account number: Initial balance: Account name is too long!
+
 --- Menu ---
 1. Withdraw
 2. Transfer

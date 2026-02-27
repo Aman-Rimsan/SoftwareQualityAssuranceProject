@@ -8,7 +8,8 @@ Option number: Login type (Standard/Admin): Account Holder Name:
 3. Paybill
 4. Deposit
 9. Logout
-Enter option number: Account number: Company (EC/CQ/FI): Enter amount to pay: 
+Enter option number: Account number: Company (EC/CQ/FI): Enter amount to pay: Insufficient funds!
+
 --- Menu ---
 1. Withdraw
 2. Transfer

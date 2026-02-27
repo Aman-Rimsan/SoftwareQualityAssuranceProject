@@ -15,7 +15,8 @@ Enter option number: Account number: Enter amount to deposit:
 3. Paybill
 4. Deposit
 9. Logout
-Enter option number: Account number: Enter amount to withdraw: 
+Enter option number: Account number: Enter amount to withdraw: Insufficient funds!
+
 --- Menu ---
 1. Withdraw
 2. Transfer

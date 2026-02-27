@@ -113,6 +113,8 @@ class BankSystem:
                 return
             
             if option == "9":
+                operations.add_pending_deposits()
+                operations.add_new_accounts()
                 recorder.write_transaction_file(transaction_output_file)
                 print("Logged out.\n")
                 return
