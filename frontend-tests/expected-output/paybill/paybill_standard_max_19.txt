@@ -1,3 +1,1 @@
-Login successful 
-ERROR: payment limit exceeded
-Logout successful
+00                      00000 00000.00   

@@ -1,3 +1,9 @@
-Login standard
-Paybill 11111 USS 10.00
-Logout
+1
+standard
+amanulla rimsan
+3
+11111
+QA
+200
+9
+2

@@ -1,3 +1,8 @@
-Login admin 
-Create duplicateAcc________ 11111 100.00
-Logout 
+1
+admin
+5
+bob
+44444
+300
+9
+2

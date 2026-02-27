@@ -1,3 +1,7 @@
-Login admin 
-Delete testAcc 11111 
-Logout
+1
+admin
+6
+amanulla rimsan
+44444
+9
+2

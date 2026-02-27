@@ -1,3 +1,0 @@
-Login successful
-ERROR: Already logged in
-Logout successful

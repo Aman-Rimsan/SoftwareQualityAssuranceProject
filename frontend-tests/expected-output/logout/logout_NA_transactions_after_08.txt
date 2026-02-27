@@ -1,3 +1,0 @@
-Login successful
-Logout successful
-ERROR: user not logged in

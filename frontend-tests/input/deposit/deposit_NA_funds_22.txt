@@ -1,8 +1,11 @@
 1
 standard
-amanulla rimsan
+bob
 4
-11111
-400
+44444
+200
+1
+44444
+200
 9
 2

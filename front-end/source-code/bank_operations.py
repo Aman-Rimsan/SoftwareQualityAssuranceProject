@@ -28,11 +28,13 @@ class BankOperations:
         Logs the transaction with code '01'.
         """
         if name == None:
-            name = input("Account holder name: ")
-        number = input("Account number: ")
+            name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
         amount = float(input("Enter amount to withdraw: "))
         acc = self.find_account(name, number)
-
+        if acc == None:
+            print("Invalid account!")
+        
         if acc and acc["status"] == "A":
             acc["balance"] -= amount
             self.recorder.record("01", name, number, amount)
@@ -43,10 +45,12 @@ class BankOperations:
         Logs the transaction with code '04'.
         """
         if name == None:
-            name = input("Account holder name: ")
-        number = input("Account number: ")
+            name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
         amount = float(input("Enter amount to deposit: "))
         acc = self.find_account(name, number)
+        if acc == None:
+            print("Invalid account!")
 
         if acc and acc["status"] == "A":
             acc["balance"] += amount
@@ -58,18 +62,22 @@ class BankOperations:
         Logs the transaction with code '02' and includes the target account.
         """
         if name == None:
-            name = input("Account holder name: ")
-        from_number = input("Account number to get transfer money: ")
-        to_number = input("Account number to send transfer to: ")
+            name = input("Account holder name: ").strip().lower()
+        from_number = input("Account number to get transfer money: ").strip()
+        to_number = input("Account number to send transfer to: ").strip()
         amount = float(input("Enter amount to transfer: "))
 
         from_acc = self.find_account(name, from_number)
+        if from_acc == None:
+            print("Invalid 'from' account!")
         to_acc = self.find_account(name, to_number)
+        if to_acc == None:
+            print("Invalid 'to' account!")
 
         if from_acc and from_acc["status"] == "A" and to_acc and to_acc["status"] == "A":
             to_acc["balance"] += amount
             from_acc["balance"] -= amount
-            self.recorder.record("02", name, from_number, amount, to_number)
+            self.recorder.record("02", name, from_number, amount)
 
     def paybill(self, name):
         """
@@ -77,11 +85,13 @@ class BankOperations:
         Logs the transaction with code '03'.
         """
         if name == None:
-            name = input("Account holder name: ")
-        number = input("Account number: ")
-        payee = input("Company (EC/CQ/FI): ")
+            name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
+        payee = input("Company (EC/CQ/FI): ").strip().upper()
         amount = float(input("Enter amount to pay: "))
         acc = self.find_account(name, number)
+        if acc == None:
+            print("Invalid account!")
 
         if acc and acc["status"] == "A":
             acc["balance"] -= amount
@@ -92,8 +102,8 @@ class BankOperations:
         Admin-only: Adds a new account to the system with an initial balance.
         Logs the creation with code '05'.
         """
-        name = input("Account holder name: ")
-        number = input("Account number: ")
+        name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
         amount = float(input("Initial balance: "))
 
         self.accounts.append({"number": number, "name": name, "status": "A", "balance": amount})
@@ -105,9 +115,11 @@ class BankOperations:
         Admin-only: Removes an existing account from the system list.
         Logs the deletion with code '06'.
         """
-        name = input("Account holder name: ")
-        number = input("Account number: ")
+        name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
         acc = self.find_account(name, number)
+        if acc == None:
+            print("Invalid account!")
 
         if acc:
             self.accounts.remove(acc)
@@ -118,9 +130,11 @@ class BankOperations:
         Admin-only: Changes an account status to 'Disabled', preventing further transactions.
         Logs the status change with code '07'.
         """
-        name = input("Account holder name: ")
-        number = input("Account number: ")
+        name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
         acc = self.find_account(name, number)
+        if acc == None:
+            print("Invalid account!")
 
         if acc:
             acc["status"] = "D"
@@ -131,7 +145,9 @@ class BankOperations:
         Admin-only: Updates the account's payment plan type from SP (student plan) to NP (non-student plan).
         Logs the change with code '08'.
         """
-        name = input("Account holder name: ")
-        number = input("Account number: ")
+        name = input("Account holder name: ").strip().lower()
+        number = input("Account number: ").strip()
+        acc = self.find_account(name, number)
 
-        self.recorder.record("08", name, number)
+        if acc:
+            self.recorder.record("08", name, number)

@@ -1,3 +1,8 @@
-Login standard
-Withdrawal 11111 20.00
-Logout
+1
+standard
+amanulla rimsan
+4
+11111
+400
+9
+2

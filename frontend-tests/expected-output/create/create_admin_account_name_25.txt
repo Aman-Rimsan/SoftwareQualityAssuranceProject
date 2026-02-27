@@ -1,3 +1,1 @@
-Login successful
-ERROR: account name too long 
-Logout successful
+00                      00000 00000.00   

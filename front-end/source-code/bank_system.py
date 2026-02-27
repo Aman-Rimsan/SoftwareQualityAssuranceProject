@@ -72,7 +72,7 @@ class BankSystem:
             print("\n1. Login")
             print("2. Exit")
             try:
-                option = input("Option number: ")
+                option = input("Option number: ").strip()
             except EOFError:
                 break
 
@@ -80,10 +80,10 @@ class BankSystem:
                 break
 
             if option == "1":
-                mode = input("Login type (Standard/Admin): ").lower()
+                mode = input("Login type (Standard/Admin): ").strip().lower()
 
                 if mode == "standard":
-                    account_name = input("Account Holder Name: ")
+                    account_name = input("Account Holder Name: ").strip().lower()
                 else:
                     account_name = None
 
@@ -108,7 +108,7 @@ class BankSystem:
             print("9. Logout")
 
             try:
-                option = input("Enter option number: ")
+                option = input("Enter option number: ").strip()
             except EOFError:
                 return
             

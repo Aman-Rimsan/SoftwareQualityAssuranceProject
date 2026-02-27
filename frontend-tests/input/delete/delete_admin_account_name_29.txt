@@ -1,3 +1,10 @@
-Login admin 
-Delete fakeAcc 12345
-Logout
+1
+admin
+6
+bob
+12345
+6
+bob
+44444
+9
+2

@@ -1,3 +1,0 @@
-Login standard 
-Disable testAcc 11111
-Logout

@@ -1,7 +1,2 @@
-Login successful
-Transaction accepted
-Sorry the specified amount cannot be withdrawn, please try again
-Logout successful
-Transaction file made: 
-01 test_name___________ 11111 00020.00 MM 
-00 ____________________ 00000 00000.00 MM
+01 amanulla rimsan      11111 00100.00   
+00                      00000 00000.00   

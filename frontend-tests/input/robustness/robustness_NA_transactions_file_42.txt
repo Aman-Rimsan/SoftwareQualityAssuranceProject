@@ -1,3 +1,0 @@
-Login standard
-Withdrawal 11111 20.00
-Logout

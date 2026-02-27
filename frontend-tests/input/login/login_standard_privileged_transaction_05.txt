@@ -1,3 +1,0 @@
-Login standard
-Create test_name 12345 10000.00
-Logout

@@ -1,4 +1,12 @@
-Login admin
-Create newAcc 12345 500.00
-Withdrawal newAcc 12345 20.00
-Logout
+1
+admin
+5
+bob
+34343
+300
+1
+bob
+34343
+200
+9
+2

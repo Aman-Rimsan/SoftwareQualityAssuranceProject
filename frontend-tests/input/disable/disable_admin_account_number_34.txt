@@ -1,3 +1,7 @@
-Login admin
-Disable test_name 11112
-Logout
+1
+admin
+7
+amanulla rimsan
+44444
+9
+2

@@ -1,3 +1,9 @@
-Login standard
-Paybill 11211 EC 10.00
-Logout
+1
+standard
+amanulla rimsan
+3
+12345
+EC
+200
+9
+2

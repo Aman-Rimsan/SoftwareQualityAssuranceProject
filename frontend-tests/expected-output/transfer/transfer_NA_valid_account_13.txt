@@ -1,3 +1,1 @@
-Login successful
-ERROR: Invalid transfer account
-Logout successful
+00                      00000 00000.00   

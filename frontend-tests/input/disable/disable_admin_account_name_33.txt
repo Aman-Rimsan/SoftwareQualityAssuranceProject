@@ -1,3 +1,7 @@
-Login admin
-Disable fakeAcc 11111
-Logout
+1
+admin
+7
+bobly
+44444
+9
+2

@@ -1,4 +1,11 @@
-Login admin
-Delete test_name 11111
-Withdrawal test_name 11111 20.00
-Logout
+1
+admin
+6
+bob
+44444
+1
+bob
+44444
+100
+9
+2

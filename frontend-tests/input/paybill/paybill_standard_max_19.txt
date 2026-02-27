@@ -1,3 +1,9 @@
-Login standard
-Paybill 11111 EC 10000.00
-Logout
+1
+standard
+amanulla rimsan
+3
+11111
+EC
+2100
+9
+2

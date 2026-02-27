@@ -1,3 +1,0 @@
-Login successful
-ERROR: privileged transaction 
-Logout successful

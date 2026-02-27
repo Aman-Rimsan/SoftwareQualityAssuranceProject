@@ -1,3 +1,9 @@
-Login standard
-Transfer 11111 22222 2000.00
-Logout
+1
+standard
+amanulla rimsan
+2
+11111
+33333
+1200
+9
+2

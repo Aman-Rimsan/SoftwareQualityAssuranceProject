@@ -1,3 +1,8 @@
-Login admin 
-Create accountBalance 11112 150000.00
-Logout
+1
+admin
+5
+bob
+34343
+120000.00
+9
+2

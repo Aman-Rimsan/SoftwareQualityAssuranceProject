@@ -1,7 +1,2 @@
-Login successful
-Transaction accepted
-ERROR: account deleted
-Logout successful
-Transaction file made: 
-06 test_name___________ 11111 00000.00 MM 
-00 ____________________ 00000 00000.00 MM
+06 bob                  44444 00000.00   
+00                      00000 00000.00   

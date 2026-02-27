@@ -1,3 +1,9 @@
-Login standard
-Paybill 11111 EC 2000.00
-Logout
+1
+standard
+john smith
+3
+22222
+EC
+600
+9
+2
