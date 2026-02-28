@@ -1,0 +1,32 @@
+
+1. Login
+2. Exit
+Option number: Login type (Standard/Admin): 
+--- Menu ---
+1. Withdraw
+2. Transfer
+3. Paybill
+4. Deposit
+5. Create
+6. Delete
+7. Disable
+8. Changeplan
+9. Logout
+Enter option number: Account holder name: Account number: Enter amount to withdraw: Insufficient funds!
+
+--- Menu ---
+1. Withdraw
+2. Transfer
+3. Paybill
+4. Deposit
+5. Create
+6. Delete
+7. Disable
+8. Changeplan
+9. Logout
+Enter option number: Logged out.
+
+
+1. Login
+2. Exit
+Option number: 
