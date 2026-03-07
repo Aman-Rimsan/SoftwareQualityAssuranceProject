@@ -12,6 +12,25 @@ Usage:
 
     check if fees are working correctly by doing: cat new_master.txt
 
+    eg 2: log in as standard, pick bob with account number 55555, withdraw 5, deposit 5. Switch back to back-end file struct and input cat new_master.txt, the original value in old_master.txt is 
+
+    original:
+    11111 amanulla rimsan      A 01500.00 0000 SP
+    22222 john smith           A 00500.00 0000 SP
+    33333 amanulla rimsan      A 01500.00 0000 SP
+    44444 bob                  A 00100.00 0000 SP
+    55555 bob                  A 00200.00 0000 SP
+    00000 END_OF_FILE          A 00000.00 0000 NP
+
+    after doing example input on bob: 
+    00000 END_OF_FILE          A 00000.00 0000 NP
+    11111 amanulla rimsan      A 01500.00 0000 SP
+    22222 john smith           A 00500.00 0000 SP
+    33333 amanulla rimsan      A 01500.00 0000 SP
+    44444 bob                  A 00100.00 0000 SP
+    55555 bob                  A 00199.90 0002 SP <---- Fee applied, so backend is working
+    00000 END_OF_FILE          A 00000.00 0000 NP
+
 Inputs:
     old_master_file          - Old Master Bank Accounts File (45 chars/line)
     merged_transaction_file  - Merged Bank Account Transaction File (40 chars/line)
@@ -127,3 +146,4 @@ if __name__ == "__main__":
 
     system = BackEndSystem(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
     system.run()
+
