@@ -1,0 +1,6 @@
+11111 amanulla rimsan      A 01500.00 0000
+33333 amanulla rimsan      A 01500.00 0000
+22222 john smith           A 00500.00 0000
+44444 bob                  A 00100.00 0000
+55555 bob                  A 00200.00 0000
+00000 END_OF_FILE          A 00000.00 0000
