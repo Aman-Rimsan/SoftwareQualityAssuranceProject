@@ -37,7 +37,7 @@ class AccountManager:
         Returns the account dict matching the given account number, or None if not found.
         """
         for acc in self.accounts:
-            if acc["number"] == number:
+            if acc["account_number"] == number:
                 return acc
         return None
 
@@ -58,11 +58,11 @@ class AccountManager:
         if round(account["balance"] - fee, 2) < 0:
             self.log_error(
                 f"Fee deduction of ${fee:.2f} would cause negative balance "
-                f"on account {account['number']} ({account['name']}). Fee skipped."
+                f"on account {account['account_number']} ({account['name']}). Fee skipped."
             )
             return
         account["balance"] = round(account["balance"] - fee, 2)
-        account["transactions"] += 1
+        account["total_transactions"] += 1
 
     def apply_all_transactions(self, transactions):
         """
@@ -87,14 +87,14 @@ class AccountManager:
         Deducts the transaction amount from the account balance.
         Logs an error if the account is not found or balance would go negative.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Withdrawal failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Withdrawal failed: account {t['account_number']} not found. Transaction: {t}")
             return
         if round(acc["balance"] - t["amount"], 2) < 0:
             self.log_error(
                 f"Withdrawal failed: would cause negative balance on account "
-                f"{t['number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
+                f"{t['account_number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
             )
             return
         acc["balance"] = round(acc["balance"] - t["amount"], 2)
@@ -107,14 +107,14 @@ class AccountManager:
         so only the source account deduction is applied. This is a known format limitation.
         Logs an error if the source account is not found or balance would go negative.
         """
-        from_acc = self.find_account(t["number"])
+        from_acc = self.find_account(t["account_number"])
         if from_acc is None:
-            self.log_error(f"Transfer failed: source account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Transfer failed: source account {t['account_number']} not found. Transaction: {t}")
             return
         if round(from_acc["balance"] - t["amount"], 2) < 0:
             self.log_error(
                 f"Transfer failed: would cause negative balance on account "
-                f"{t['number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
+                f"{t['account_number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
             )
             return
         from_acc["balance"] = round(from_acc["balance"] - t["amount"], 2)
@@ -125,14 +125,14 @@ class AccountManager:
         Deducts the bill payment amount from the account balance.
         Logs an error if the account is not found or balance would go negative.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Paybill failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Paybill failed: account {t['account_number']} not found. Transaction: {t}")
             return
         if round(acc["balance"] - t["amount"], 2) < 0:
             self.log_error(
                 f"Paybill failed: would cause negative balance on account "
-                f"{t['number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
+                f"{t['account_number']}. Amount: ${t['amount']:.2f}. Transaction: {t}"
             )
             return
         acc["balance"] = round(acc["balance"] - t["amount"], 2)
@@ -143,9 +143,9 @@ class AccountManager:
         Adds the deposited amount to the account balance.
         Logs an error if the account is not found.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Deposit failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Deposit failed: account {t['account_number']} not found. Transaction: {t}")
             return
         acc["balance"] = round(acc["balance"] + t["amount"], 2)
         self.deduct_fee(acc)
@@ -155,17 +155,17 @@ class AccountManager:
         Creates a new account and adds it to the accounts list.
         Logs an error if the account number already exists (constraint violation).
         """
-        if self.find_account(t["number"]) is not None:
+        if self.find_account(t["account_number"]) is not None:
             self.log_error(
-                f"Create failed: account number {t['number']} already exists. Transaction: {t}"
+                f"Create failed: account number {t['account_number']} already exists. Transaction: {t}"
             )
             return
         new_acc = {
-            "number": t["number"],
+            "account_number": t["account_number"],
             "name": t["name"],
             "status": "A",
             "balance": t["amount"],
-            "transactions": 0,
+            "total_transactions": 0,
             "plan": "SP"  # all new accounts start on the student plan
         }
         self.accounts.append(new_acc)
@@ -175,9 +175,9 @@ class AccountManager:
         Removes the specified account from the accounts list.
         Logs an error if the account is not found.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Delete failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Delete failed: account {t['account_number']} not found. Transaction: {t}")
             return
         self.accounts.remove(acc)
 
@@ -186,9 +186,9 @@ class AccountManager:
         Sets the account status to disabled (D), preventing further transactions.
         Logs an error if the account is not found.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Disable failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Disable failed: account {t['account_number']} not found. Transaction: {t}")
             return
         acc["status"] = "D"
         self.deduct_fee(acc)
@@ -198,9 +198,9 @@ class AccountManager:
         Toggles the account plan between SP (student) and NP (non-student).
         Logs an error if the account is not found.
         """
-        acc = self.find_account(t["number"])
+        acc = self.find_account(t["account_number"])
         if acc is None:
-            self.log_error(f"Changeplan failed: account {t['number']} not found. Transaction: {t}")
+            self.log_error(f"Changeplan failed: account {t['account_number']} not found. Transaction: {t}")
             return
         acc["plan"] = "NP" if acc["plan"] == "SP" else "SP"
         self.deduct_fee(acc)

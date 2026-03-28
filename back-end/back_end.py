@@ -101,11 +101,18 @@ class BackEndSystem:
                     if len(line) < 2:
                         continue
 
-                    code = line[0:2].strip()
-                    name = line[3:23].strip() if len(line) > 3 else ""
-                    number = line[24:29].strip() if len(line) > 24 else "00000"
-                    amount = float(line[30:38]) if len(line) > 30 else 0.0
-                    misc = line[39:41].strip() if len(line) > 39 else ""
+                    parts = line.split()
+
+                    code = parts[0] if len(parts) > 0 else ""
+                    name = parts[1] if len(parts) > 1 else ""
+                    number = parts[2] if len(parts) > 2 else "00000"
+
+                    try:
+                        amount = float(parts[3]) if len(parts) > 3 else 0.0
+                    except:
+                        amount = 0.0
+
+                    misc = parts[4] if len(parts) > 4 else ""
 
                     transactions.append({
                         "code": code,
