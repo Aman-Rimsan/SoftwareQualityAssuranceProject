@@ -67,7 +67,7 @@ def read_old_bank_accounts(file_path):
                     continue
 
                 accounts.append({
-                    'account_number': account_number.lstrip('0') or '0',
+                    'account_number': account_number,
                     'name': name.strip(),
                     'status': status,
                     'balance': balance,

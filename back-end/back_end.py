@@ -66,24 +66,27 @@ class BackEndSystem:
         self.new_current_file = new_current_file
 
     def run(self):
-        """
-        Executes the full pipeline: load accounts, apply all transactions,
-        sort accounts, then write both output files.
-        """
-        # Step 1: Load old master accounts using starter read.py
+        # Step 1: Load accounts
         accounts = read_old_bank_accounts(self.old_master_file)
 
-        # Step 2: Load all transactions from merged file
+        #Remove ALL existing END_OF_FILE entries
+        accounts = [acc for acc in accounts if acc["account_number"] != "00000"]
+
+        # Step 2: Read transactions
         transactions = self._read_transactions(self.transaction_file)
 
-        # Step 3: Apply transactions and enforce constraints
+        # Step 3: Apply transactions
         manager = AccountManager(accounts)
         manager.apply_all_transactions(transactions)
 
-        # Step 4: Sort accounts by account number (required by spec)
+        # Step 4: Sort
         manager.accounts.sort(key=lambda acc: acc["account_number"].zfill(5))
 
-        # Step 5: Write both output files using starter write.py
+        # Step 5: Write files (ONLY this adds END_OF_FILE)
+        # Remove ANY leftover END_OF_FILE before writing
+        manager.accounts = [
+            acc for acc in manager.accounts if acc["account_number"] != "00000"
+        ]
         self._write_master_accounts(manager.accounts, self.new_master_file)
         write_new_current_accounts(manager.accounts, self.new_current_file)
 
@@ -98,21 +101,20 @@ class BackEndSystem:
             with open(filename, "r") as file:
                 for line in file:
                     line = line.rstrip("\n")
-                    if len(line) < 2:
+
+                    if len(line) < 40:
                         continue
 
-                    parts = line.split()
-
-                    code = parts[0] if len(parts) > 0 else ""
-                    name = parts[1] if len(parts) > 1 else ""
-                    number = parts[2] if len(parts) > 2 else "00000"
+                    code = line[0:2].strip()
+                    name = line[3:23].strip()
+                    number = line[24:29].strip()
 
                     try:
-                        amount = float(parts[3]) if len(parts) > 3 else 0.0
+                        amount = float(line[30:38])
                     except:
                         amount = 0.0
 
-                    misc = parts[4] if len(parts) > 4 else ""
+                    misc = line[39:41].strip()
 
                     transactions.append({
                         "code": code,
@@ -121,6 +123,7 @@ class BackEndSystem:
                         "amount": amount,
                         "misc": misc
                     })
+
         except Exception as e:
             log_constraint_error(str(e), filename, fatal=True)
             exit(1)

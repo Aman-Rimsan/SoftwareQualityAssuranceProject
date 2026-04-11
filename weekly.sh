@@ -1,18 +1,23 @@
 #!/bin/bash
-# HOW TO RUN:
-# chmod +x weekly.sh
+
+# Make scripts executable:
+# chmod +x daily.sh weekly.sh
+
+# Usage:
 # ./weekly.sh
+#
+# Description:
+# Runs the daily script 7 times (Day 1 to Day 7),
+# simulating a full week of banking operations.
+# Each day uses updated account files from the previous day.
 
-daily="./daily.sh"
 
-accounts="front-end/source-code/accounts.txt"
+echo "===== STARTING WEEKLY RUN ====="
 
-for day in 1 2 3 4 5 6 7; do
-
-    echo "Day $day"
-
-    "$daily"
-    
-    cp new_current.txt "$accounts"
-
+for DAY in {1..7}
+do
+    echo "===== DAY $DAY ====="
+    ./daily.sh $DAY
 done
+
+echo "===== WEEKLY RUN COMPLETE ====="
